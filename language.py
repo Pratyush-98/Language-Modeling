@@ -17,7 +17,16 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    f1=open(filename)
+    r=f1.read()
+    l=r.splitlines()
+    l1=[]
+    for i in range(len(l)):
+        if l[i]!="":
+            l1.append(l[i].split())
+            # l1[i]=l[i].split()
+    return l1
+
 
 
 '''
