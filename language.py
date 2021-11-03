@@ -114,7 +114,16 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def countBigrams(corpus):
-    return
+    Dict_={}
+    for sentence in corpus:
+        for i in range(len(sentence)-1):
+            if sentence[i] not in Dict_:
+                Dict_[sentence[i]]={}
+            if sentence[i+1] not in Dict_[sentence[i]]:
+                Dict_[sentence[i]][sentence[i+1]]=1
+            else:
+                Dict_[sentence[i]][sentence[i+1]]+=1
+    return Dict_
 
 
 ### WEEK 2 ###
