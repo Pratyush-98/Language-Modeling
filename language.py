@@ -24,7 +24,7 @@ def loadBook(filename):
     for i in range(len(l)):
         if l[i]!="":
             l1.append(l[i].split())
-            # l1[i]=l[i].split()
+    f1.close()
     return l1
 
 
