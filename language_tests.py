@@ -176,7 +176,7 @@ def testBuildUniformProbs():
         [ 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 
           1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31 ])
     print("... done!")
-
+ 
 def testBuildUnigramProbs():
     print("Testing buildUnigramProbs()...", end="")
     assert(buildUnigramProbs(\
