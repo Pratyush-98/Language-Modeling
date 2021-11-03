@@ -17,7 +17,16 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    f1=open(filename)
+    r=f1.read()
+    l=r.splitlines()
+    l1=[]
+    for i in range(len(l)):
+        if l[i]!="":
+            l1.append(l[i].split())
+    f1.close()
+    return l1
+
 
 
 '''
@@ -27,7 +36,11 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    count=0
+    for i in corpus:
+        count+=len(i)
+    return count
+    
 
 
 '''
@@ -37,7 +50,13 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    lst=[]
+    for i in corpus:
+        for j in i:
+            if j not in lst:
+                lst.append(j)
+    return lst
+
 
 
 '''
@@ -47,7 +66,15 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
+    Dict_={}
+    for i in corpus:
+        for j in i:
+            if j not in Dict_:
+                Dict_[j]=1
+            else:
+                Dict_[j]=Dict_[j]+1
+    return Dict_
+    
 
 
 '''
@@ -57,7 +84,11 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def getStartWords(corpus):
-    return
+    lst=[]
+    for i in corpus:
+        if i[0] not in lst:
+            lst.append(i[0])
+    return lst
 
 
 '''
@@ -67,7 +98,13 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countStartWords(corpus):
-    return
+    Dict_={}
+    for i in corpus:
+        if i[0] not in Dict_:
+            Dict_[i[0]]=1
+        else:
+            Dict_[i[0]]+=1
+    return Dict_ 
 
 
 '''
@@ -77,7 +114,16 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def countBigrams(corpus):
-    return
+    Dict_={}
+    for sentence in corpus:
+        for i in range(len(sentence)-1):
+            if sentence[i] not in Dict_:
+                Dict_[sentence[i]]={}
+            if sentence[i+1] not in Dict_[sentence[i]]:
+                Dict_[sentence[i]][sentence[i+1]]=1
+            else:
+                Dict_[sentence[i]][sentence[i+1]]+=1
+    return Dict_
 
 
 ### WEEK 2 ###
