@@ -208,9 +208,14 @@ generateTextFromUnigrams(count, words, probs)
 Parameters: int ; list of strs ; list of floats
 Returns: str
 '''
+import random
 from random import choices
 def generateTextFromUnigrams(count, words, probs):
-    return
+    str_=""
+    rand=random.choices(words, weights=probs,k=count) 
+    for i in rand:
+        str_=str_+" "+i
+    return str_
 
 
 '''
