@@ -405,15 +405,15 @@ def testGenerateTextFromBigrams():
         "you" : { "words" : ["."], "probs" : [1] } }
 
     sentence = generateTextFromBigrams(10, startWords, startProbs, bigramProbs)
-    sentenceWords = sentence.strip().split()
-    assert(len(sentenceWords) == 10)
+    str_ = sentence.strip().split()
+    assert(len(str_) == 10)
 
     # Check that the order of words is legal
-    for i in range(len(sentenceWords)):
-        if i == 0 or sentenceWords[i-1] == ".":
-            assert(sentenceWords[i] in startWords)
+    for i in range(len(str_)):
+        if i == 0 or str_[i-1] == ".":
+            assert(str_[i] in startWords)
         else:
-            assert(sentenceWords[i] in bigramProbs[sentenceWords[i-1]]["words"])
+            assert(str_[i] in bigramProbs[str_[i-1]]["words"])
     print("... done!")
 
 def week2Tests():

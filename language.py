@@ -224,8 +224,19 @@ generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs)
 Parameters: int ; list of strs ; list of floats ; dict mapping strs to (dicts mapping strs to (lists of values))
 Returns: str
 '''
+import random
+from random import choices
 def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs):
-    return
+    str_=""
+    for i in range(count):
+        s=str_.split()
+        if len(s)==0 or s[-1]==".":
+            rand=random.choices(startWords,weights=startWordProbs,k=count) 
+            str_=str_+" "+rand[i]
+        else:
+            rand=random.choices(bigramProbs[s[i-1]]["words"],weights=bigramProbs[s[i-1]]["probs"],k=count)
+            str_=str_+" "+rand[i]
+    return str_
 
 
 ### WEEK 3 ###
