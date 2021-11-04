@@ -4,6 +4,7 @@ Name:
 Roll No:
 """
 
+from typing import Dict
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -163,8 +164,24 @@ Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs
 Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 '''
 def buildBigramProbs(unigramCounts, bigramCounts):
-    return
+    Dict_={}
+    for prevWord in bigramCounts:
+        words=[]
+        probs=[]
+        for i in bigramCounts[prevWord]:
+            temp={}
+            words.append(i)
+            prob=bigramCounts[prevWord][i]/unigramCounts[prevWord]
+            probs.append(prob)
+        temp["words"]=words
+        temp["probs"]=probs
+        Dict_[prevWord]=temp
+    return Dict_
+        
 
+    return
+# { "hello" : 2, "world" : 2, "again" : 1 },
+#         { "hello" : { "world" : 2 }, "world" : { "again" : 1 } }
 
 '''
 getTopWords(count, words, probs, ignoreList)
@@ -173,7 +190,16 @@ Parameters: int ; list of strs ; list of floats ; list of strs
 Returns: dict mapping strs to floats
 '''
 def getTopWords(count, words, probs, ignoreList):
-    return
+    Dict_={}
+    temp={}
+    for i in range(len(words)):
+            temp[words[i]]=probs[i]
+    # temp= dict(sorted(temp.items(), key=lambda item: item[1], reverse=True)[:count])
+    for i in temp :
+        if i not in ignoreList:
+            Dict_[i]=temp[i]
+    Dict_= dict(sorted(Dict_.items(), key=lambda item: item[1], reverse=True)[:count])        
+    return Dict_
 
 
 '''
