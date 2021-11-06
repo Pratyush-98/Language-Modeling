@@ -348,6 +348,8 @@ Parameters: 2D list of strs ; 2D list of strs ; int ; str
 Returns: None
 '''
 def graphTopWordsInScatterplot(corpus1, corpus2, numWords, title):
+    data = setupChartData(corpus1,corpus2,numWords)
+    scatterPlot(data["corpus1Probs"], data["corpus2Probs"], data["topWords"], title)
     return
 
 
