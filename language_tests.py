@@ -176,7 +176,7 @@ def testBuildUniformProbs():
         [ 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 
           1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31, 1/31 ])
     print("... done!")
-
+ 
 def testBuildUnigramProbs():
     print("Testing buildUnigramProbs()...", end="")
     assert(buildUnigramProbs(\
@@ -211,7 +211,7 @@ def testBuildBigramProbs():
         { "hello" : 2, "world" : 2, "again" : 1 },
         { "hello" : { "world" : 2 }, "world" : { "again" : 1 } }) == \
         { "hello" : { "words" : ["world"], "probs" : [1] }, 
-          "world" : { "words" : ["again"], "probs" : [0.5] } })
+          "world" : { "words" : ["again"], "probs" : [0.5] } }) 
     assert(buildBigramProbs(\
         { "hello" : 1, "and" : 1, "welcome" : 1, "to" : 2, "15-110" : 1, "." : 2, "we're" : 1, "happy" : 1, "have" : 1, "you" : 1 }, 
         { "hello" : { "and" : 1 }, "and" : { "welcome" : 1 }, "welcome" : { "to" : 1 }, 
@@ -405,15 +405,15 @@ def testGenerateTextFromBigrams():
         "you" : { "words" : ["."], "probs" : [1] } }
 
     sentence = generateTextFromBigrams(10, startWords, startProbs, bigramProbs)
-    sentenceWords = sentence.strip().split()
-    assert(len(sentenceWords) == 10)
+    str_ = sentence.strip().split()
+    assert(len(str_) == 10)
 
     # Check that the order of words is legal
-    for i in range(len(sentenceWords)):
-        if i == 0 or sentenceWords[i-1] == ".":
-            assert(sentenceWords[i] in startWords)
+    for i in range(len(str_)):
+        if i == 0 or str_[i-1] == ".":
+            assert(str_[i] in startWords)
         else:
-            assert(sentenceWords[i] in bigramProbs[sentenceWords[i-1]]["words"])
+            assert(str_[i] in bigramProbs[str_[i-1]]["words"])
     print("... done!")
 
 def week2Tests():
