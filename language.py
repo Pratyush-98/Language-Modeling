@@ -280,6 +280,11 @@ Parameters: 2D list of strs ; str
 Returns: None
 '''
 def graphTopNextWords(corpus, word):
+    unigramCounts = countUnigrams(corpus)
+    bigramCounts = countBigrams(corpus)
+    bigramProbs = buildBigramProbs(unigramCounts, bigramCounts)
+    count = getTopWords(50,bigramProbs[word]["words"],bigramProbs[word]["probs"],ignore)
+    barPlot(count, "Top Next words")
     return
 
 
@@ -290,6 +295,7 @@ Parameters: 2D list of strs ; 2D list of strs ; int
 Returns: dict mapping strs to (lists of values)
 '''
 def setupChartData(corpus1, corpus2, topWordCount):
+    
     return
 
 
